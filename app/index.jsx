@@ -32,10 +32,56 @@ export default function Index() {
   };
 
   return (
-    <SafeAreaView>
-      <View>
-        <Text></Text>
+    <SafeAreaView style={StyleSheet.container}>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Add a new todo"
+          placeholderTextColor="gray"
+          value={currTodo}
+          onChangeText={setCurrTodo}
+        />
+        <Pressable onPress={addTodo} style={styles.addButton}>
+          <Text style={styles.addButtonText}>Add</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+    padding: 10,
+    width: "100%",
+    maxWidth: 1024,
+    marginHorizontal: "auto",
+    pointerEvents: "auto",
+  },
+  input: {
+    flex: 1,
+    borderColor: "gray",
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    marginRight: 10,
+    fontSize: 18,
+    minWidth: 0,
+    color: "white",
+  },
+  addButton: {
+    backgroundColor: "white",
+    borderRadius: 5,
+    padding: 10,
+  },
+  addButtonText: {
+    fontSize:18,
+    color:'black',
+  },
+});
