@@ -9,12 +9,18 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { Inter_500Medium, useFonts } from "@expo-google-fonts/inter";
+// font need to be insalled using npm i command
+// npx expo start -c -> to clear cache and rebuild app from ground
 
 export default function Index() {
-  const [todos, setTodos] = useState([
-    { id: 1, title: "hello", completed: false },
-  ]);
+  const [todos, setTodos] = useState([]);
   const [currTodo, setCurrTodo] = useState("");
+  const [loaded, error] = useFonts({ Inter_500Medium });
+
+  if (!loaded && !error) {
+    return null; //we want font to load first before content and also check for error during font loading
+  }
 
   const addTodo = () => {
     if (currTodo.trim()) {
@@ -110,6 +116,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     minWidth: 0,
     color: "white",
+    fontFamily: "Inter_500Medium",
   },
   addButton: {
     backgroundColor: "white",
@@ -135,6 +142,7 @@ const styles = StyleSheet.create({
   },
   todoText: {
     flex: 1,
+    fontFamily: "Inter_500Medium",
     fontSize: 18,
     color: "white",
   },
